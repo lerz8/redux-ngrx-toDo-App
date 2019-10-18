@@ -8,6 +8,10 @@ export const CAMBIAR_TODO = '[ToDo] Cambiar Texto ToDo';
 
 export const BORRAR_TODO = '[ToDo] Borrar ToDo';
 
+export const BORRAR_ALL_TODO = '[ToDo] Borrar All ToDo';
+
+export const TOGGLE_ALL_TODO = '[ToDo] Toggle All ToDo';
+
 
 export class AgregarToDoAction implements Action {
     readonly type = AGREGAR_TODO;
@@ -17,6 +21,12 @@ export class AgregarToDoAction implements Action {
 export class ToggleToDoAction implements Action {
     readonly type = TOGGLE_TODO;
     constructor(public id: string) {}
+}
+
+
+export class ToggleAllToDoAction implements Action {
+    readonly type = TOGGLE_ALL_TODO;
+    constructor(public estado: boolean) {}
 }
 
 export class CambiarToDoAction implements Action {
@@ -29,10 +39,16 @@ export class BorrarToDoAction implements Action {
     constructor(public id: string) {}
 }
 
+
+export class BorrarAllToDoAction implements Action {
+    readonly type = BORRAR_ALL_TODO;
+}
 export type Acciones =
 AgregarToDoAction |
 ToggleToDoAction |
+ToggleAllToDoAction |
 BorrarToDoAction |
+BorrarAllToDoAction |
 CambiarToDoAction;
 
 

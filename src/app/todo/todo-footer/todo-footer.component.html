@@ -1,18 +1,12 @@
 <footer class="footer">
     <!-- This should be `0 items left` by default -->
-    <span class="todo-count"><strong>0</strong> item left</span>
+    <span class="todo-count"><strong>{{this.pendientes}}</strong> Pendientes</span>
     <!-- Remove this if you don't implement routing -->
     <ul class="filters">
-        <li>
-            <a class="selected" href="#/">All</a>
-        </li>
-        <li>
-            <a href="#/active">Active</a>
-        </li>
-        <li>
-            <a href="#/completed">Completed</a>
+        <li (click)="cambiarFiltro(filtro)" *ngFor="let filtro of filtrosValidos">
+            <a [ngClass]="{'selected' : filtro === filtroSeleccionado}" href="#">{{filtro}}</a>
         </li>
     </ul>
     <!-- Hidden if no completed items are left ↓ -->
-    <button class="clear-completed">Clear completed</button>
+    <button (click)="LimpiarCompletados()" class=" clear-completed " style="font-size: 10px; font-weight:bold;">Limpiar Completadas</button>
 </footer>

@@ -1,3 +1,3 @@
 <ul class="todo-list">
-    <app-todo-item [miToDo]="UntoDo" *ngFor="let UntoDo of toDos"></app-todo-item>
+    <app-todo-item [miToDo]="UntoDo" *ngFor="let UntoDo of toDos | filterToDo: filtro"></app-todo-item>
 </ul>

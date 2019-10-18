@@ -9,7 +9,7 @@ const toDo3 = new ToDo('Aprender NGRX');
 
 const estadoInicial: ToDo[] = [toDo1, toDo2, toDo3];
 
-export function todoReducer( state = estadoInicial, action: fromTodo.Acciones ): ToDo[] {
+export function toDoReducer( state = estadoInicial, action: fromTodo.Acciones ): ToDo[] {
 
 
     switch ( action.type) {
@@ -44,9 +44,20 @@ export function todoReducer( state = estadoInicial, action: fromTodo.Acciones ):
                 }
             });
 
+        case fromTodo.TOGGLE_ALL_TODO:
+                return state.map( ToDoEdit => {
+                   return {
+                        ...ToDoEdit,
+                        completo: action.estado
+                    };
+                });
+
 
         case fromTodo.BORRAR_TODO:
             return state.filter( BorrarToDo => BorrarToDo.id !== action.id);
+
+        case fromTodo.BORRAR_ALL_TODO:
+                return state.filter( BorrarAllToDo => !BorrarAllToDo.completo );
 
         default:
             return state;
